@@ -13,6 +13,8 @@
 		F70CC7BE21C1EC5E00FB40F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F70CC7BD21C1EC5E00FB40F0 /* Assets.xcassets */; };
 		F70CC7C121C1EC5E00FB40F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F70CC7BF21C1EC5E00FB40F0 /* LaunchScreen.storyboard */; };
 		F70CC7C921C20EA500FB40F0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70CC7C821C20EA500FB40F0 /* GameScene.swift */; };
+		F70F59BE21C73AE3009E32B4 /* karuizawa-birds-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F70F59BC21C73AE2009E32B4 /* karuizawa-birds-1.mp3 */; };
+		F70F59BF21C73AE3009E32B4 /* chick-cry1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F70F59BD21C73AE2009E32B4 /* chick-cry1.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		F70CC7C021C1EC5E00FB40F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F70CC7C221C1EC5E00FB40F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F70CC7C821C20EA500FB40F0 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		F70F59BC21C73AE2009E32B4 /* karuizawa-birds-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "karuizawa-birds-1.mp3"; sourceTree = "<group>"; };
+		F70F59BD21C73AE2009E32B4 /* chick-cry1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "chick-cry1.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				F70CC7BF21C1EC5E00FB40F0 /* LaunchScreen.storyboard */,
 				F70CC7C221C1EC5E00FB40F0 /* Info.plist */,
 				F70CC7C821C20EA500FB40F0 /* GameScene.swift */,
+				F70F59BD21C73AE2009E32B4 /* chick-cry1.mp3 */,
+				F70F59BC21C73AE2009E32B4 /* karuizawa-birds-1.mp3 */,
 			);
 			path = FlappyBird;
 			sourceTree = "<group>";
@@ -126,7 +132,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F70CC7C121C1EC5E00FB40F0 /* LaunchScreen.storyboard in Resources */,
+				F70F59BE21C73AE3009E32B4 /* karuizawa-birds-1.mp3 in Resources */,
 				F70CC7BE21C1EC5E00FB40F0 /* Assets.xcassets in Resources */,
+				F70F59BF21C73AE3009E32B4 /* chick-cry1.mp3 in Resources */,
 				F70CC7BC21C1EC5D00FB40F0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
