@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -14,7 +15,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var wallNode:SKNode!
     var bird:SKSpriteNode!
     var itemNode:SKSpriteNode!
-    var itemScoreNode:SKNode!
     
     // 衝突判定カテゴリー ↓追加
     let birdCategory: UInt32 = 1 << 0       // 0...00001
@@ -22,7 +22,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let wallCategory: UInt32 = 1 << 2       // 0...00100
     let scoreCategory: UInt32 = 1 << 3      // 0...01000
     let itemCategory: UInt32 = 1 << 4       // 0...10000
-    let itemScoreCategory: UInt32 = 1 << 5  // 0...100000
     
     // スコア用
     var score = 0
@@ -33,10 +32,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var itemScore = 0
     var itemScoreLabelNode:SKLabelNode!
     
-    // 効果音を読み込む
+    // BGM，アイテムと衝突した時の効果音を準備
+    var audioPlayer: AVAudioPlayer!  // BGM 用
     let sound = SKAction.playSoundFileNamed("chick-cry1.mp3", waitForCompletion: true)
 
-    
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {
         
@@ -46,6 +45,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // 背景色を設定
         backgroundColor = UIColor(red: 0.15, green: 0.75, blue: 0.90, alpha: 1)
+        
+        // BGMの設定
+        let filePath = Bundle.main.path(forResource: "karuizawa-birds-1",ofType: "mp3")
+        let musicPath = URL(fileURLWithPath: filePath!)
+        audioPlayer = try! AVAudioPlayer(contentsOf: musicPath)
+        audioPlayer.play()
         
         // スクロールするスプライトの親ノード
         scrollNode = SKNode()
@@ -64,9 +69,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupCloud()
         setupWall()
         setupBird()
+        setupItem()
         
         setupScoreLabel() // スコア表示ラベル
-        setupItem()
         setupItemScoreLabel()
     }
     
@@ -381,7 +386,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if (contact.bodyA.categoryBitMask & scoreCategory) == scoreCategory || (contact.bodyB.categoryBitMask & scoreCategory) == scoreCategory {
             // スコア用の物体と衝突した
-            print("ScoreUp")
             score += 1
             scoreLabelNode.text = "Score:\(score)" // スコア表示
             
@@ -396,7 +400,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory {
             
             // アイテムと衝突した
-            print("ItemScoreUp")
             itemScore += 1
             itemScoreLabelNode.text = "ItemScore:\(itemScore)"
             
@@ -416,8 +419,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         } else {
             // 壁か地面と衝突した
-            print("GameOver")
-            
             // スクロールを停止させる
             scrollNode.speed = 0
             
