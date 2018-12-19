@@ -421,6 +421,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // 壁か地面と衝突した
             // スクロールを停止させる
             scrollNode.speed = 0
+            itemNode.speed = 0
             
             bird.physicsBody?.collisionBitMask = groundCategory
             
@@ -433,7 +434,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func restart() {
         score = 0
+        itemScore = 0
         scoreLabelNode.text = String("Score:\(score)")  // スコア表示をリセット
+        itemScoreLabelNode.text = "ItemScore:\(itemScore)"  // アイテムスコア表示をリセット
         
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y:self.frame.size.height * 0.7)
         bird.physicsBody?.velocity = CGVector.zero
@@ -441,9 +444,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bird.zRotation = 0.0
         
         wallNode.removeAllChildren()
+        itemNode.removeAllChildren()
         
         bird.speed = 1
         scrollNode.speed = 1
+        itemNode.speed = 1
     }
     
     
